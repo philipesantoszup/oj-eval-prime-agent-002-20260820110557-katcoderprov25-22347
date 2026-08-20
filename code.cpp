@@ -158,7 +158,7 @@ void int2048::fft(std::vector<std::complex<double> >& a, bool invert) {
         for (int i = 0; i < n; i += len) {
             std::complex<double> w(1);
             for (int j = 0; j < len / 2; ++j) {
-                std::complex<double> u = a[i + j], v = a[i + j] * w;
+                std::complex<double> u = a[i + j], v = a[i + j + len / 2] * w;
                 a[i + j] = u + v;
                 a[i + j + len / 2] = u - v;
                 w *= wlen;
