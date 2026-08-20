@@ -34,8 +34,8 @@ private:
                            std::vector<int>& q, std::vector<int>& r);
 
 public:
-    static const int BASE = 10000;
-    static const int BASE_DIGITS = 4;
+    static const int BASE = 1000;
+    static const int BASE_DIGITS = 3;
 
     int2048();
     int2048(long long);
@@ -211,8 +211,10 @@ std::vector<int> int2048::multiplyLarge(const std::vector<int>& a, const std::ve
     long long carry = 0;
     for (int i = 0; i < n; ++i) {
         long long cur = res[i] + carry;
-        res[i] = cur % BASE;
-        carry = cur / BASE;
+        long long r = cur % BASE;
+        if (r < 0) r += BASE;
+        res[i] = r;
+        carry = (cur - r) / BASE;
     }
     std::vector<int> result;
     result.reserve(n);

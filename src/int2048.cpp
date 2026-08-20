@@ -132,8 +132,10 @@ std::vector<int> int2048::multiplyLarge(const std::vector<int>& a, const std::ve
     long long carry = 0;
     for (int i = 0; i < n; ++i) {
         long long cur = res[i] + carry;
-        res[i] = cur % BASE;
-        carry = cur / BASE;
+        long long r = cur % BASE;
+        if (r < 0) r += BASE;
+        res[i] = r;
+        carry = (cur - r) / BASE;
     }
     std::vector<int> result;
     result.reserve(n);

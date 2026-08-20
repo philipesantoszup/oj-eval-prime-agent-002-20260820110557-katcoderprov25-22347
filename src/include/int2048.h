@@ -34,8 +34,8 @@ private:
                            std::vector<int>& q, std::vector<int>& r);
 
 public:
-    static const int BASE = 10000;
-    static const int BASE_DIGITS = 4;
+    static const int BASE = 1000;
+    static const int BASE_DIGITS = 3;
 
     int2048();
     int2048(long long);
